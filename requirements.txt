@@ -1,0 +1,4 @@
+pyautogui
+lxml
+bs4
+keyboard
