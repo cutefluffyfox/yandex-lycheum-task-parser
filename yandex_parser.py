@@ -10,7 +10,7 @@ from json import load
 
 def make_dir(dir_name: str):
     if dir_name not in listdir(getcwd()):
-        mkdir(dir_name)
+        mkdir(dir_name.translate(translator))
 
 
 def fill_html(link: str):
@@ -68,7 +68,7 @@ def parse_lesson(lesson_url: str, lesson_title: str):
     make_dir(lesson_title)
     chdir(lesson_title)
     for task_group in bs.find_all('ul', attrs={'class': 'Accordion-Group'}):
-        group_type = task_group.find_all('h3', attrs={'class': 'heading heading_level_3 task-group-header__heading'})[0].text.translate(translator)
+        group_type = task_group.find_all('h3', attrs={'class': 'heading heading_level_3 task-group-header__heading'})[0].text
         make_dir(group_type)
         chdir(group_type)
         for task in task_group.find_all('a', href=True):
@@ -91,7 +91,7 @@ def parse_main():
 
 
 # Заполнить данные тут
-YEAR_TO_DOWNLOAD = 'https://lyceum.yandex.ru/courses/123/groups/479'  # ссылка на главную страницу курса
+YEAR_TO_DOWNLOAD = '<LINK TO DOWNLOAD>'  # ссылка на главную страницу курса
 # Заполнить данные тут
 
 
