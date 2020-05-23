@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from os import mkdir, chdir, getcwd, listdir
+from os.path import join
 from webbrowser import open as web_open
 from time import sleep
 import pyautogui
@@ -17,7 +18,7 @@ def fill_html(link: str):
     if keyboard.is_pressed('ctrl'):
         exit()
     web_open(link)
-    with open('cords.json', 'r', encoding='UTF-8') as file:
+    with open(cords_path, 'r', encoding='UTF-8') as file:
         json_file = load(file)
         assert json_file.get('HTML') is not None, 'Вначале запустите __init__.py'
         assert json_file.get('TAB') is not None, 'Вначале запустите __init__.py'
@@ -90,11 +91,12 @@ def parse_main():
 
 
 # Заполнить данные тут
-YEAR_TO_DOWNLOAD = 'https://lyceum.yandex.ru/courses/165/groups/1302'  # ссылка на главную страницу курса
+YEAR_TO_DOWNLOAD = 'https://lyceum.yandex.ru/courses/123/groups/479'  # ссылка на главную страницу курса
 # Заполнить данные тут
 
 
 HOST = 'https://lyceum.yandex.ru'
+cords_path = join(getcwd(), 'cords.json')
 make_dir('yandex')
 chdir('yandex')
 translator = str.maketrans({elem: None for elem in '/\\|?*:<>«»'})  # запрещённые символы в создании файла
