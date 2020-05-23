@@ -8,7 +8,7 @@
 pip install requirements.txt
 ```
 - Запустите __ init __.py
-- Укажите в main.py ссылку для скачивания
+- Укажите в yandex_parser.py ссылку для скачивания
 ```python
 YEAR_TO_DOWNLOAD = 'https://lyceum.yandex.ru/courses/165/groups/1302'  # ссылка на главную страницу курса
 ```
